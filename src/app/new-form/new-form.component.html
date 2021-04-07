@@ -2,7 +2,11 @@
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-offset-2">
             <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-                <div class="user-data">
+                <div 
+                class="user-data" 
+                ngModelGroup="userData"
+                #userData="ngModelGroup"
+                >
                     <div class="form-group">
                         <label for="username">
                             Username
@@ -16,7 +20,9 @@
                         required
                         >
                     </div>
-                    <button class="btn btn-default">
+                    <button 
+                    class="btn btn-default"
+                    (click) = "suggestUserName()">
                         Suggest an username
                     </button>
                     <div class="form-group">
@@ -59,6 +65,37 @@
                         </option>
                     </select>
                 </div>
+                <p 
+                *ngIf="userData.invalid && userData.touched"
+                class="alert alert-danger"
+                >
+                  User data is invalid
+                </p>
+                <div class="form-group">
+                    <textarea
+                    class="form-control"
+                    name="answer"
+                    rows="3"
+                    [(ngModel)]="answer"
+                    >
+                    </textarea>
+                    <p>
+                        Your Reply: {{answer}}
+                    </p>
+                    <div
+                    class="radio"
+                    *ngFor="let gender of genders"
+                    >
+                    <label>
+                        <input 
+                        type="radio"
+                        name="gender"
+                        ngModel
+                        [value]="gender">
+                        {{gender}}
+                    </label>
+                    </div>
+                </div>
                 <button 
                 class="btn btn-primary" 
                 type="submit"
@@ -68,5 +105,28 @@
                 </button>
             </form>
         </div>
+    </div>
+    <hr/>
+    <div 
+    *ngIf="submitted"
+    class="col-xs-12">
+        <h3>
+            Your Data
+        </h3>
+        <p>
+            Username: {{user.username}}
+        </p>
+        <p>
+            Mail: {{user.email}}
+        </p>
+        <p>
+            Secret Question: {{user.secretQuestion}}
+        </p>
+        <p>
+            Answer: {{answer}}
+        </p>
+        <p>
+            Gender: {{this.f.value.gender}}
+        </p>
     </div>
 </div>
