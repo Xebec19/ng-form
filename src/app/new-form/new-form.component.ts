@@ -10,6 +10,11 @@ export class NewFormComponent {
 
   @ViewChild('f') signupForm: NgForm;
 
+  suggestUserName(){
+    const suggestedName = 'Superuser';
+  }
+  defaultQuestion = "teacher";
+
   onSubmit(f:NgForm){
     console.log('###The form values are ### ',this.signupForm);
   }
