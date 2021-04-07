@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-form',
   templateUrl: './new-form.component.html',
   styleUrls: ['./new-form.component.css']
 })
-export class NewFormComponent implements OnInit {
+export class NewFormComponent {
 
-  constructor() { }
+  @ViewChild('f') signupForm: NgForm;
 
-  ngOnInit(): void {
+  onSubmit(f:NgForm){
+    console.log('###The form values are ### ',this.signupForm);
   }
+  constructor() { }
 
 }
