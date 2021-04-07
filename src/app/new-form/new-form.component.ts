@@ -44,6 +44,7 @@ export class NewFormComponent {
     this.user.email = this.signupForm.value.userData.email;
     this.user.secretQuestion = this.signupForm.value.secret;
     this.user.username = this.signupForm.value.username;
+    this.signupForm.reset();
   }
   constructor() { }
 
