@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-            <form>
+            <form [formGroup]="myform" (ngSubmit)="OnSubmit()">
                 <div class="form-group">
                     <label for="username">
                         Username
@@ -9,7 +9,8 @@
                     <input 
                     type="text"
                     id="username"
-                    class="form-control">
+                    class="form-control"
+                    formControlName="username">
                 </div>
                 <div class="form-group">
                     <label for="email">
@@ -18,7 +19,8 @@
                     <input 
                     type="text"
                     id="email"
-                    class="form-control">
+                    class="form-control"
+                    formGroupName="email">
                 </div>
                 <div 
                 class="radio"
@@ -26,7 +28,8 @@
                 <label>
                     <input 
                     type="radio"
-                    [value]="gender">
+                    [value]="gender"
+                    formControlName="gender">
                     {{gender}}
                 </label>
                 </div>
